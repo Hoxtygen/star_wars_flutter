@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:star_wars_flutter/character.dart';
 import 'character.dart';
+import 'character_api.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,26 +37,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void initState() {
     super.initState();
-    futureCharacter = myCharacter.fetchAlbum();
+    futureCharacter = fetchAlbum();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FutureBuilder<Character>(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(widget.title),
+        ),
+        body: SafeArea(
+          child: Container(
+            child: FutureBuilder<Character>(
               future: futureCharacter,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   print(snapshot.data);
-                  return Text(snapshot.data.name);
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(snapshot.data.name),
+                      Text(snapshot.data.gender),
+                      Text("Features"),
+                      Text(snapshot.data.height),
+                      Text(snapshot.data.mass),
+                      Text(snapshot.data.hairColor),
+                      Text(snapshot.data.skinColor),
+                      Text(snapshot.data.homeWorld),
+                    ],
+                  );
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
                 }
@@ -64,9 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return CircularProgressIndicator();
               },
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }

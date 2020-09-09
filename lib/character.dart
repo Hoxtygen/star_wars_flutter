@@ -1,6 +1,3 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
 class Character {
   final String name;
   final String gender;
@@ -25,21 +22,9 @@ class Character {
       gender: json['gender'],
       height: json['height'],
       mass: json['mass'],
-      hairColor: json['hairColor'],
-      skinColor: json['skinColor'],
-      homeWorld: json['homeWorld'],
+      hairColor: json['hair_color'],
+      skinColor: json['skin_color'],
+      homeWorld: json['homeworld'],
     );
-  }
-
-  Future<Character> fetchAlbum() async {
-    final response = await http.get('https://swapi.dev/api/people/1/');
-
-    if (response.statusCode == 200) {
-      // print(response.body);
-      print(json.decode(response.body));
-      return Character.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load character');
-    }
   }
 }
