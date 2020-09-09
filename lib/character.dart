@@ -32,16 +32,14 @@ class Character {
   }
 
   Future<Character> fetchAlbum() async {
-    final response = await http.get('https://swapi.dev/api/people/');
+    final response = await http.get('https://swapi.dev/api/people/1/');
 
     if (response.statusCode == 200) {
       // print(response.body);
-      // print(json.decode(response.body));
+      print(json.decode(response.body));
       return Character.fromJson(json.decode(response.body));
     } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load album');
+      throw Exception('Failed to load character');
     }
   }
 }
