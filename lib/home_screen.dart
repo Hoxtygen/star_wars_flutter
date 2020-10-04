@@ -32,7 +32,6 @@ FutureBuilder _charactersData() {
     future: getCharacters(),
     builder: (BuildContext context, AsyncSnapshot<List<Character>> snapshot) {
       if (snapshot.hasData) {
-        print(snapshot.data);
         List<Character> data = snapshot.data;
         return _characters(data);
       } else if (snapshot.hasError) {
