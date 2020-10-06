@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:star_wars_flutter/single_character.dart';
 import 'character.dart';
 import 'character_api.dart';
 import 'package:star_wars_flutter/character.dart';
+import 'reusable_card.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -21,8 +23,30 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
           title: Text(widget.title),
         ),
-        body: SafeArea(
-          child: Container(child: _charactersData()),
+        body: Center(
+          child: Column(
+            children: [
+              Expanded(
+                child: _charactersData(),
+              ),
+              Row(
+                children: [
+                  FlatButton(
+                    onPressed: () {
+                      print("You clicked previous");
+                    },
+                    child: Text("Previous"),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      print("You clicked next");
+                    },
+                    child: Text("Next"),
+                  ),
+                ],
+              )
+            ],
+          ),
         ));
   }
 }
@@ -47,12 +71,26 @@ ListView _characters(data) {
       itemCount: data.length,
       itemBuilder: (context, index) {
         return Card(
-          child: _tile(data[index].name, data[index].gender, Icons.image),
+          child: SingleCard(
+            name: data[index].name,
+            gender: data[index].gender,
+            // characterInfo: data,
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return FullCharacter(
+                    characterUrl: data[index].url,
+                    characterName: data[index].name,
+                  );
+                },
+              ));
+            },
+          ),
         );
       });
 }
 
-ListTile _tile(String name, String gender, IconData icon) {
+/* ListTile _tile(String name, String gender, IconData icon) {
   return ListTile(
     title: Text(name,
         style: TextStyle(
@@ -65,4 +103,4 @@ ListTile _tile(String name, String gender, IconData icon) {
       color: Colors.blue[500],
     ),
   );
-}
+} */

@@ -6,15 +6,20 @@ class Character {
   final String hairColor;
   final String skinColor;
   final String homeWorld;
+  final String birthYear;
+  final String url;
 
-  Character(
-      {this.name,
-      this.gender,
-      this.height,
-      this.mass,
-      this.hairColor,
-      this.skinColor,
-      this.homeWorld});
+  Character({
+    this.name,
+    this.gender,
+    this.height,
+    this.mass,
+    this.hairColor,
+    this.skinColor,
+    this.homeWorld,
+    this.birthYear,
+    this.url,
+  });
 
   factory Character.fromJson(Map<String, dynamic> json) {
     return Character(
@@ -25,6 +30,8 @@ class Character {
       hairColor: json['hair_color'],
       skinColor: json['skin_color'],
       homeWorld: json['homeworld'],
+      birthYear: json['birth_year'],
+      url: json['url'],
     );
   }
 }
