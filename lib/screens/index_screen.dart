@@ -35,7 +35,7 @@ class LandingPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return MyHomePage(title: "Never say Never");
+                          return MyHomePage(title: "Star Wars Characters");
                         }));
                       },
                       color: Colors.blue,
