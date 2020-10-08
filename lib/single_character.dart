@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:star_wars_flutter/utilities/style_constants.dart';
 import 'character.dart';
 import 'people_api.dart';
 
@@ -32,7 +33,6 @@ class _FullCharacterState extends State<FullCharacter> {
         name = "Cannot get character name";
         return;
       }
-      // url = characterInfo["url"];
       url = characterUrl;
       name = characterName;
     });
@@ -63,15 +63,102 @@ class _FullCharacterState extends State<FullCharacter> {
 }
 
 single(data) {
-  return Column(
-    children: [
-      Text("Name: ${data.name}"),
-      Text("Gender: ${data.gender}"),
-      Text("Height: ${data.height}"),
-      Text("Mass: ${data.mass}"),
-      Text("Skin Color: ${data.skinColor}"),
-      Text("Hair Color: ${data.hairColor}"),
-      Text("Birth Year: ${data.birthYear}"),
-    ],
+  return Container(
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage("images/starwars-tros.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+     constraints: BoxConstraints.expand(),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Text(
+              "Name",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.name}",
+              style: kCharacterDataStyle,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Gender",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.gender}",
+              style: kCharacterDataStyle,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Height",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.height}",
+              style: kCharacterDataStyle,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Mass",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.mass}",
+              style: kCharacterDataStyle,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Skin Color",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.skinColor}",
+              style: kCharacterDataStyle,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Hair Color",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.hairColor}",
+              style: kCharacterDataStyle,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Birth Year",
+              style: kCharacterTitleStyle,
+            ),
+            Text(
+              "${data.birthYear}",
+              style: kCharacterDataStyle,
+            )
+          ],
+        )
+      ],
+    ),
   );
 }

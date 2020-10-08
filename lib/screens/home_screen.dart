@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:star_wars_flutter/single_character.dart';
-import 'character.dart';
-import 'character_api.dart';
+import '../character.dart';
+import '../character_api.dart';
 import 'package:star_wars_flutter/character.dart';
-import 'reusable_card.dart';
+import '../reusable_card.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

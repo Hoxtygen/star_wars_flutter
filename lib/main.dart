@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'package:star_wars_flutter/screens/index_screen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Star Wars Character'),
+      // home: MyHomePage(title: 'Star Wars Character'),
+      home: LandingPage()
     );
   }
 }
